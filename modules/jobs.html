@@ -1,0 +1,29 @@
+<!doctype html><html lang="ar" dir="rtl"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>لوحة الوظائف — حصيف</title>
+<link rel="stylesheet" href="../assets/css/style.css"/>
+</head><body><div class="container">
+<h2>لوحة الوظائف</h2>
+<div class="toolbar">
+  <input class="input" id="qq" placeholder="بحث (مسمى/مهارة/مدينة)" oninput="util.filterTable('jobs',this.value)">
+  <button class="btn secondary" onclick="exportCSV()">تصدير CSV</button>
+</div>
+<table class="table" id="jobs"><thead><tr>
+  <th>المسمى</th><th>القطاع</th><th>نوع</th><th>المهارات</th><th>المدينة</th><th>تقديم</th>
+</tr></thead><tbody>
+<tr><td>محلل بيانات</td><td>خاص</td><td>دوام كامل</td><td>SQL, Python</td><td>الرياض</td><td><button class="btn">تقديم</button></td></tr>
+<tr><td>مدير مشروع غير ربحي</td><td>غير ربحي</td><td>جزئي</td><td>PM, أثر</td><td>جدة</td><td><button class="btn">تقديم</button></td></tr>
+<tr><td>باحث مساعد</td><td>جامعة</td><td>تدريب تعاوني</td><td>إحصاء</td><td>حائل</td><td><button class="btn">تقديم</button></td></tr>
+<tr><td>استشاري جدوى</td><td>حكومي</td><td>عقد</td><td>تحليل مالي</td><td>الدمام</td><td><button class="btn">تقديم</button></td></tr>
+</tbody></table>
+</div>
+<script src="../assets/js/util.js"></script>
+<script>
+function exportCSV(){
+  const rows=[['المسمى','القطاع','النوع','المهارات','المدينة']];
+  document.querySelectorAll('#jobs tbody tr').forEach(tr=>rows.push(
+    Array.from(tr.children).slice(0,5).map(td=>td.innerText)
+  ));
+  util.download('jobs.csv', util.toCSV(rows));
+}
+</script></body></html>
