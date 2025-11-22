@@ -2,21 +2,565 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <title>منصة حصيف الوطنية - واجهة المنصة</title>
+    <title>منصة حصيف الوطنية</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Tailwind CSS عبر CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="bg-gray-50">
-    <div id="root"></div>
+  <body class="bg-gray-50 min-h-screen">
+    <header class="w-full border-b border-gray-100 bg-white">
+      <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div
+            class="h-10 w-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-bold text-lg"
+          >
+            ح
+          </div>
+          <div class="flex flex-col">
+            <span class="font-semibold text-gray-900 text-sm md:text-base">
+              منصة حصيف الوطنية
+            </span>
+            <span class="text-xs text-gray-500">
+              برنامج شباب المملكة حصيف الوطني – حلول صائبة يقترح فعلها
+            </span>
+          </div>
+        </div>
 
-    <!-- React & ReactDOM عبر CDN -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    <!-- Babel لتشغيل JSX مباشرة في المتصفح -->
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <div class="flex items-center gap-2">
+          <button
+            class="hidden md:inline-flex px-3 py-1.5 rounded-xl border border-gray-200 text-xs text-gray-700"
+          >
+            مركز المساعدة
+          </button>
+          <button
+            class="h-9 w-9 rounded-full bg-gray-100 flex items-center justify-center text-xs text-gray-600"
+          >
+            ر
+          </button>
+        </div>
+      </div>
+    </header>
 
-    <!-- كود الواجهة -->
-    <script type="text/babel" src="./js/app.js"></script>
+    <div class="flex-1 w-full">
+      <div
+        class="max-w-7xl mx-auto flex flex-col md:flex-row gap-4 px-4 py-4 md:py-6"
+      >
+        <!-- الشريط الجانبي للحسابات -->
+        <aside class="md:w-64 flex-shrink-0 space-y-3">
+          <div class="rounded-2xl border border-gray-100 bg-white p-3 md:p-4">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-semibold text-gray-600">الحسابات</span>
+              <span class="text-[10px] text-gray-400">منصة متعددة الأطراف</span>
+            </div>
+            <div
+              id="accountsList"
+              class="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-1"
+            >
+              <button
+                class="account-btn flex-1 md:flex-none text-right px-3 py-2 rounded-xl border text-xs md:text-sm transition whitespace-nowrap border-emerald-600 bg-emerald-50 text-emerald-700"
+                data-account="individual"
+              >
+                حساب الأفراد
+              </button>
+              <button
+                class="account-btn flex-1 md:flex-none text-right px-3 py-2 rounded-xl border text-xs md:text-sm transition whitespace-nowrap border-gray-200 bg-gray-50 hover:bg-gray-100 text-gray-700"
+                data-account="private"
+              >
+                حساب القطاع الخاص
+              </button>
+              <button
+                class="account-btn flex-1 md:flex-none text-right px-3 py-2 rounded-xl border text-xs md:text-sm transition whitespace-nowrap border-gray-200 bg-gray-50 hover:bg-gray-100 text-gray-700"
+                data-account="nonprofit"
+              >
+                حساب القطاع غير الربحي
+              </button>
+              <button
+                class="account-btn flex-1 md:flex-none text-right px-3 py-2 rounded-xl border text-xs md:text-sm transition whitespace-nowrap border-gray-200 bg-gray-50 hover:bg-gray-100 text-gray-700"
+                data-account="donor"
+              >
+                حساب المانح
+              </button>
+              <button
+                class="account-btn flex-1 md:flex-none text-right px-3 py-2 rounded-xl border text-xs md:text-sm transition whitespace-nowrap border-gray-200 bg-gray-50 hover:bg-gray-100 text-gray-700"
+                data-account="university"
+              >
+                حساب الجامعات
+              </button>
+              <button
+                class="account-btn flex-1 md:flex-none text-right px-3 py-2 rounded-xl border text-xs md:text-sm transition whitespace-nowrap border-gray-200 bg-gray-50 hover:bg-gray-100 text-gray-700"
+                data-account="government"
+              >
+                حساب الجهات الحكومية / الإمارة
+              </button>
+            </div>
+          </div>
+        </aside>
+
+        <!-- محتوى الحساب -->
+        <main class="flex-1 flex flex-col gap-4">
+          <!-- بطاقة وصف الحساب -->
+          <section
+            id="accountHeader"
+            class="rounded-2xl border p-4 md:p-5 bg-emerald-50 border-emerald-200"
+          >
+            <div
+              class="flex flex-col md:flex-row md:items-center md:justify-between gap-3"
+            >
+              <div>
+                <h1
+                  id="accountTitle"
+                  class="text-base md:text-lg font-semibold text-gray-900 mb-1"
+                >
+                  حساب الأفراد
+                </h1>
+                <p
+                  id="accountDesc"
+                  class="text-xs md:text-sm text-gray-600 max-w-2xl"
+                >
+                  تمكين الأفراد من طرح المبادرات، والفرص، والتطوع، والتدريب.
+                </p>
+              </div>
+              <div class="flex gap-2">
+                <button
+                  class="px-4 py-2 rounded-xl text-sm font-medium bg-emerald-600 text-white hover:bg-emerald-700 transition"
+                >
+                  إجراء رئيسي
+                </button>
+                <button
+                  class="px-4 py-2 rounded-xl text-sm font-medium border border-gray-200 text-gray-700 hover:bg-gray-50 transition"
+                >
+                  إعدادات الحساب
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- تبويبات الأقسام + الجداول -->
+          <section
+            class="rounded-2xl border border-gray-100 bg-white p-3 md:p-4"
+          >
+            <!-- تبويبات الأقسام -->
+            <div id="sectionsTabs" class="flex flex-wrap gap-2 mb-4"></div>
+
+            <!-- عنوان القسم المختار -->
+            <div
+              class="mb-4 flex items-center justify-between gap-2 border-b pb-2"
+            >
+              <div>
+                <h2
+                  id="sectionTitle"
+                  class="text-sm md:text-base font-semibold text-gray-900"
+                >
+                  مبادراتي
+                </h2>
+                <p
+                  id="sectionDesc"
+                  class="text-xs text-gray-500 mt-0.5"
+                >
+                  إدارة المبادرات المقدمة من قبل الفرد وربطها ببرامج وأهداف رؤية المملكة
+                  2030.
+                </p>
+              </div>
+            </div>
+
+            <!-- محتوى القسم -->
+            <div id="sectionContent" class="space-y-4"></div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      // تعريف الحسابات والأقسام بشكل بسيط (بدون React)
+      const ACCOUNTS = {
+        individual: {
+          title: "حساب الأفراد",
+          desc: "تمكين الأفراد من طرح المبادرات، والفرص، والتطوع، والتدريب.",
+          colorClass: "bg-emerald-50 border-emerald-200",
+          sections: [
+            {
+              id: "my-initiatives",
+              label: "مبادراتي",
+              desc: "إدارة المبادرات المقدمة من قبل الفرد وربطها ببرامج وأهداف رؤية المملكة 2030.",
+              type: "table",
+              columns: [
+                "اسم المبادرة",
+                "برنامج الرؤية",
+                "الهدف التفصيلي",
+                "الحالة",
+                "الجهة الشريكة",
+                "تاريخ التقديم",
+              ],
+            },
+            {
+              id: "opportunities",
+              label: "الفرص",
+              desc: "عرض الفرص الوظيفية، وفرص التطوع، وفرص التدريب المرتبطة بملف الفرد.",
+              type: "table",
+              columns: [
+                "نوع الفرصة",
+                "العنوان",
+                "الجهة",
+                "المدينة",
+                "تاريخ الإغلاق",
+              ],
+            },
+            {
+              id: "wallet",
+              label: "محفظتي",
+              desc: "عرض الرصيد، الاشتراكات، التبرعات، والمكافآت الخاصة بالفرد.",
+              type: "cards",
+              cards: [
+                { label: "الرصيد المتاح", value: "0.00 ر.س" },
+                { label: "إجمالي التبرعات", value: "0.00 ر.س" },
+                { label: "نقاط التحفيز", value: "0 نقطة" },
+              ],
+            },
+          ],
+        },
+
+        private: {
+          title: "حساب القطاع الخاص",
+          desc: "تمكين الشركات من المسؤولية الاجتماعية، الرعاية، الاستثمار، وإدارة الفرص التنموية.",
+          colorClass: "bg-sky-50 border-sky-200",
+          sections: [
+            {
+              id: "csr",
+              label: "فرص المنح (المسؤولية الاجتماعية)",
+              desc: "طرح فرص المسؤولية الاجتماعية وربطها بالمشاريع والمبادرات التنموية.",
+              type: "table",
+              columns: [
+                "اسم الفرصة",
+                "القطاع",
+                "المنطقة",
+                "نوع المساهمة",
+                "قيمة تقديرية",
+                "حالة الفرصة",
+              ],
+            },
+            {
+              id: "events",
+              label: "الفعاليات",
+              desc: "إدارة الفعاليات التي تشارك فيها الشركة أو ترعاها.",
+              type: "table",
+              columns: [
+                "اسم الفعالية",
+                "النوع",
+                "الموقع",
+                "التاريخ",
+                "الحالة",
+              ],
+            },
+            {
+              id: "reports",
+              label: "تقارير المسؤولية الاجتماعية",
+              desc: "لوحة توضح إجمالي الإنفاق التنموي وعدد المشاريع والمستفيدين.",
+              type: "cards",
+              cards: [
+                { label: "إجمالي الإنفاق التنموي", value: "0 ر.س" },
+                { label: "عدد المشاريع المدعومة", value: "0" },
+                { label: "عدد المستفيدين", value: "0" },
+              ],
+            },
+          ],
+        },
+
+        nonprofit: {
+          title: "حساب القطاع غير الربحي",
+          desc: "تمكين الجمعيات من التمويل، إدارة المتطوعين، الوظائف، والبرامج.",
+          colorClass: "bg-purple-50 border-purple-200",
+          sections: [
+            {
+              id: "projects",
+              label: "المشاريع",
+              desc: "إدارة المشاريع التنموية للجمعية وحالة تمويلها ومؤشرات الأداء.",
+              type: "table",
+              columns: [
+                "اسم المشروع",
+                "مجال المشروع",
+                "برنامج الرؤية",
+                "الجهة الداعمة",
+                "حالة التمويل",
+              ],
+            },
+            {
+              id: "volunteering",
+              label: "فرص التطوع",
+              desc: "عرض وإدارة الفرص التطوعية المرتبطة بالجمعية.",
+              type: "table",
+              columns: [
+                "اسم الفرصة",
+                "المدينة",
+                "الساعات المطلوبة",
+                "الحالة",
+              ],
+            },
+          ],
+        },
+
+        donor: {
+          title: "حساب المانح",
+          desc: "إدارة محافظ المنح، فرص التمويل، ومتابعة المشاريع.",
+          colorClass: "bg-amber-50 border-amber-200",
+          sections: [
+            {
+              id: "grant-opps",
+              label: "فرص المنح",
+              desc: "عرض المشاريع المقترحة للتمويل مع بياناتها الأساسية.",
+              type: "table",
+              columns: [
+                "اسم المشروع",
+                "الجهة المقدمة",
+                "القطاع",
+                "المنطقة",
+                "قيمة التمويل",
+              ],
+            },
+            {
+              id: "portfolio",
+              label: "محفظة المانح",
+              desc: "نظرة شاملة على المشاريع الجارية والالتزامات المالية.",
+              type: "cards",
+              cards: [
+                { label: "المشاريع الجارية", value: "0" },
+                { label: "إجمالي الالتزامات", value: "0 ر.س" },
+                { label: "المبالغ المصروفة", value: "0 ر.س" },
+              ],
+            },
+          ],
+        },
+
+        university: {
+          title: "حساب الجامعات",
+          desc: "تعزيز الدور الاستشاري والعلمي، وبرامج التدريب، وتسويق المبادرات البحثية.",
+          colorClass: "bg-teal-50 border-teal-200",
+          sections: [
+            {
+              id: "consulting",
+              label: "الاستشارات العلمية",
+              desc: "ربط المشاريع التنموية بالكليات والمراكز البحثية.",
+              type: "table",
+              columns: [
+                "اسم المشروع",
+                "الجهة المستفيدة",
+                "الكلية/المركز",
+                "نوع المشاركة",
+              ],
+            },
+            {
+              id: "programs",
+              label: "البرامج الجامعية",
+              desc: "إدارة البرامج والمبادرات الجامعية المرتبطة بالتنمية.",
+              type: "table",
+              columns: [
+                "اسم البرنامج",
+                "الفئة المستهدفة",
+                "النمط",
+                "المدة",
+              ],
+            },
+          ],
+        },
+
+        government: {
+          title: "حساب الجهات الحكومية / الإمارة",
+          desc: "عرض المشاريع والمبادرات، الموافقات على الفعاليات، وتتبع المؤشرات.",
+          colorClass: "bg-rose-50 border-rose-200",
+          sections: [
+            {
+              id: "initiatives",
+              label: "المبادرات الحكومية",
+              desc: "إدارة المبادرات الحكومية وربطها بأهداف رؤية 2030.",
+              type: "table",
+              columns: [
+                "اسم المبادرة",
+                "الجهة المالكة",
+                "برنامج الرؤية",
+                "الهدف الاستراتيجي",
+                "حالة التنفيذ",
+              ],
+            },
+            {
+              id: "events-approval",
+              label: "طلبات الموافقة على الفعاليات",
+              desc: "إدارة طلبات الموافقة على الفعاليات في المنطقة.",
+              type: "table",
+              columns: [
+                "اسم الفعالية",
+                "المنظم",
+                "الموقع",
+                "التاريخ",
+                "نوع المشاركة",
+              ],
+            },
+          ],
+        },
+      };
+
+      const accountHeader = document.getElementById("accountHeader");
+      const accountTitle = document.getElementById("accountTitle");
+      const accountDesc = document.getElementById("accountDesc");
+      const sectionsTabs = document.getElementById("sectionsTabs");
+      const sectionTitle = document.getElementById("sectionTitle");
+      const sectionDesc = document.getElementById("sectionDesc");
+      const sectionContent = document.getElementById("sectionContent");
+
+      function renderSection(accountKey, section) {
+        sectionTitle.textContent = section.label;
+        sectionDesc.textContent = section.desc || "";
+
+        // تفريغ المحتوى
+        sectionContent.innerHTML = "";
+
+        if (section.type === "table") {
+          const wrapper = document.createElement("div");
+          wrapper.className =
+            "overflow-x-auto border border-gray-100 rounded-2xl bg-white";
+
+          const table = document.createElement("table");
+          table.className = "min-w-full text-sm text-right";
+
+          const thead = document.createElement("thead");
+          thead.className = "border-b bg-gray-50";
+
+          const trHead = document.createElement("tr");
+          section.columns.forEach((col) => {
+            const th = document.createElement("th");
+            th.className =
+              "px-4 py-3 font-semibold text-gray-600 whitespace-nowrap";
+            th.textContent = col;
+            trHead.appendChild(th);
+          });
+          thead.appendChild(trHead);
+
+          const tbody = document.createElement("tbody");
+          [1, 2, 3].forEach(() => {
+            const tr = document.createElement("tr");
+            tr.className = "border-b last:border-b-0";
+            section.columns.forEach(() => {
+              const td = document.createElement("td");
+              td.className = "px-4 py-3 text-gray-400 whitespace-nowrap";
+              td.textContent = "— بيانات تجريبية —";
+              tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+          });
+
+          table.appendChild(thead);
+          table.appendChild(tbody);
+          wrapper.appendChild(table);
+          sectionContent.appendChild(wrapper);
+        }
+
+        if (section.type === "cards") {
+          const grid = document.createElement("div");
+          grid.className = "grid gap-4 md:grid-cols-3";
+
+          (section.cards || []).forEach((card) => {
+            const cardDiv = document.createElement("div");
+            cardDiv.className =
+              "rounded-2xl border border-gray-100 bg-white p-4 flex flex-col gap-2";
+
+            const label = document.createElement("span");
+            label.className = "text-sm text-gray-500";
+            label.textContent = card.label;
+
+            const value = document.createElement("span");
+            value.className = "text-lg font-semibold text-gray-900";
+            value.textContent = card.value;
+
+            cardDiv.appendChild(label);
+            cardDiv.appendChild(value);
+            grid.appendChild(cardDiv);
+          });
+
+          sectionContent.appendChild(grid);
+        }
+      }
+
+      function renderAccount(accountKey) {
+        const acc = ACCOUNTS[accountKey];
+        if (!acc) return;
+
+        // تحديث الهيدر
+        accountHeader.className =
+          "rounded-2xl border p-4 md:p-5 " + acc.colorClass;
+        accountTitle.textContent = acc.title;
+        accountDesc.textContent = acc.desc;
+
+        // تبويبات الأقسام
+        sectionsTabs.innerHTML = "";
+        acc.sections.forEach((sec, idx) => {
+          const btn = document.createElement("button");
+          btn.className =
+            "section-tab px-3 py-1 rounded-full text-sm transition border " +
+            (idx === 0
+              ? "bg-emerald-600 text-white border-emerald-600"
+              : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50");
+          btn.textContent = sec.label;
+          btn.dataset.sectionId = sec.id;
+          btn.addEventListener("click", () => {
+            // تحديث الستايل
+            document
+              .querySelectorAll(".section-tab")
+              .forEach((b) =>
+                b.classList.remove(
+                  "bg-emerald-600",
+                  "text-white",
+                  "border-emerald-600"
+                )
+              );
+            document
+              .querySelectorAll(".section-tab")
+              .forEach((b) =>
+                b.classList.add("bg-white", "text-gray-700", "border-gray-200")
+              );
+
+            btn.classList.remove("bg-white", "text-gray-700", "border-gray-200");
+            btn.classList.add(
+              "bg-emerald-600",
+              "text-white",
+              "border-emerald-600"
+            );
+
+            renderSection(
+              accountKey,
+              acc.sections.find((s) => s.id === sec.id)
+            );
+          });
+          sectionsTabs.appendChild(btn);
+        });
+
+        // عرض أول قسم افتراضياً
+        if (acc.sections.length > 0) {
+          renderSection(accountKey, acc.sections[0]);
+        }
+      }
+
+      // تفعيل الضغط على أزرار الحسابات
+      document
+        .querySelectorAll(".account-btn")
+        .forEach((btn) =>
+          btn.addEventListener("click", () => {
+            const key = btn.dataset.account;
+
+            // تحديث ستايل الأزرار
+            document
+              .querySelectorAll(".account-btn")
+              .forEach((b) => {
+                b.className =
+                  "account-btn flex-1 md:flex-none text-right px-3 py-2 rounded-xl border text-xs md:text-sm transition whitespace-nowrap border-gray-200 bg-gray-50 hover:bg-gray-100 text-gray-700";
+              });
+
+            btn.className =
+              "account-btn flex-1 md:flex-none text-right px-3 py-2 rounded-xl border text-xs md:text-sm transition whitespace-nowrap border-emerald-600 bg-emerald-50 text-emerald-700";
+
+            renderAccount(key);
+          })
+        );
+
+      // أول تحميل: عرض حساب الأفراد
+      renderAccount("individual");
+    </script>
   </body>
 </html>
