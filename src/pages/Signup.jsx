@@ -12,8 +12,8 @@ export const Signup = ({ onChangeView }) => {
   ];
 
   return (
-    <div className="max-w-4xl mx_AUTO px-4 py-8 md:py-10">
-      <div className="rounded-lg border border-brand-border bg_WHITE p-5 md:p-6 space-y-5">
+    <div className="max-w-4xl mx-auto px-4 py-8 md:py-10">
+      <div className="rounded-lg border border-brand-border bg-white p-5 md:p-6 space-y-5">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <div>
             <h2 className="text-lg font-semibold text-brand-text mb-1">

@@ -4,23 +4,51 @@ import { PrimaryButton, GhostButton } from "../components/common/Buttons";
 
 export const Landing = ({ onChangeView }) => {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10 md:py-12">
-      <div className="grid md:grid-cols-2 gap-10 items-center mb-10">
+    <div className="max-w-7xl mx-auto px-4 py-10 md:py-12 space-y-8">
+      <div className="grid md:grid-cols-2 gap-10 items-center">
         <div className="space-y-4">
           <div className="inline-flex items-center gap-2 rounded-full border border-brand-border bg-brand-light px-3 py-1 text-[11px] text-brand-green mb-1">
-            منصة رقمية وطنية متعددة الأطراف
+            منصة حصيف - الملف التشغيلي والتقني (ديمو بصري)
           </div>
           <h1 className="text-2xl md:text-3xl font-bold text-brand-text leading-relaxed">
-            حصيف… منصة وطنية لربط الأفراد والقطاعات
+            منصة حصيف الوطنية للتكامل التنموي
             <br className="hidden md:block" />
-            وتفعيل الحلول والمشاريع المرتبطة برؤية 2030.
+            وتمكين المشاركة المجتمعية وفق رؤية المملكة 2030.
           </h1>
           <p className="text-sm md:text-base text-gray-600 max-w-xl leading-relaxed">
-            تجمع منصة حصيف بين الأفراد، والقطاع الخاص، والقطاع غير الربحي،
-            والجامعات، والجهات المانحة، والجهات الحكومية، وهيئات التطوير، في
-            منظومة واحدة تنظّم الحلول والمبادرات والفعاليات والشراكات، مع ربط
-            منهجي بمستهدفات رؤية المملكة 2030.
+            تُعد منصة حصيف منظومة وطنية مبتكرة تتجاوز مفهوم النظام الإلكتروني
+            التقليدي؛ فهي بنية تشغيلية شاملة تربط بين الحلول والمشاريع
+            والفعاليات والمرافق والفرص الاستثمارية والتطوعية والوظيفية في شبكة
+            واحدة تضم الجهات الحكومية، وهيئات التطوير، وإمارات المناطق، والقطاع
+            الخاص، والقطاع غير الربحي، والجامعات، والجهات المانحة، والأفراد
+            المبادرين.
           </p>
+
+          {/* Vision & Mission */}
+          <div className="grid md:grid-cols-2 gap-3 pt-2">
+            <div className="rounded-lg border border-brand-border bg-white p-3">
+              <h3 className="text-sm font-semibold text-brand-text mb-1">
+                الرؤية
+              </h3>
+              <p className="text-[11px] md:text-xs text-gray-600 leading-relaxed">
+                أن تكون منصة حصيف المنظومة الوطنية المرجعية لتنظيم الحلول
+                والمشاريع والفعاليات والشراكات وربطها بمستهدفات رؤية المملكة
+                2030، بما يعمّق الأثر التنموي ويحّفز المشاركة المجتمعية.
+              </p>
+            </div>
+            <div className="rounded-lg border border-brand-border bg-white p-3">
+              <h3 className="text-sm font-semibold text-brand-text mb-1">
+                الرسالة
+              </h3>
+              <p className="text-[11px] md:text-xs text-gray-600 leading-relaxed">
+                تمكين التكامل بين الأفراد والجهات الحكومية والقطاعين الخاص وغير
+                الربحي والجامعات والجهات المانحة عبر منصة رقمية موحدة تعتمد
+                مكوّنات تشغيلية واضحة ونماذج علمية لقياس الأثر وربط كل مشاركة
+                ببرامج وأهداف ومؤشرات الرؤية.
+              </p>
+            </div>
+          </div>
+
           <div className="flex flex-wrap gap-3 pt-2">
             <PrimaryButton onClick={() => onChangeView("accounts")}>
               استعراض حسابات المنصة
@@ -29,12 +57,8 @@ export const Landing = ({ onChangeView }) => {
               كيف تعمل حصيف؟
             </GhostButton>
           </div>
-          <div className="flex flex-wrap gap-4 pt-4 text-[11px] text-gray-500">
-            <div>ربط بالمؤشرات والبرامج الوطنية</div>
-            <div>مسؤولية اجتماعية واستثمار اجتماعي</div>
-            <div>تعزيز علمي عبر الجامعات</div>
-          </div>
         </div>
+
         <div className="rounded-lg border border-brand-border bg-white p-4">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs text-brand-text">
@@ -60,38 +84,38 @@ export const Landing = ({ onChangeView }) => {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-4">
+      {/* Main goals section */}
+      <section className="grid md:grid-cols-3 gap-4">
         <div className="rounded-lg border border-brand-border bg-white p-4">
           <h3 className="text-sm font-semibold text-brand-text mb-2">
-            ربط بالرؤية 2030
+            تنظيم تدفق الحلول والمشاريع
           </h3>
           <p className="text-xs text-gray-600 leading-relaxed">
-            كل مشروع أو مبادرة في حصيف يمر عبر نموذج عمل واضح ويرتبط ببرامج
-            وأهداف ومؤشرات رؤية 2030، مع إمكانية المتابعة من الجهات الحكومية
+            توحيد مسار استقبال الحلول والمبادرات والمشاريع من مختلف الأطراف
+            وتحويلها إلى نماذج عمل واضحة قابلة للتنفيذ والمتابعة وقياس الأثر.
+          </p>
+        </div>
+        <div className="rounded-lg border border-brand-border bg-white p-4">
+          <h3 className="text-sm font-semibold text-brand-text mb-2">
+            تعميق ارتباط المجتمع بالرؤية 2030
+          </h3>
+          <p className="text-xs text-gray-600 leading-relaxed">
+            ربط كل مشروع أو مبادرة أو فعالية ببرامج وأهداف ومؤشرات رؤية
+            المملكة 2030، مع إمكان استعراض هذا الارتباط أمام الجهات الحكومية
             والجهات المانحة.
           </p>
         </div>
         <div className="rounded-lg border border-brand-border bg-white p-4">
           <h3 className="text-sm font-semibold text-brand-text mb-2">
-            تكامل بين القطاعات
+            رفع كفاءة الإنفاق وشفافية الأثر
           </h3>
           <p className="text-xs text-gray-600 leading-relaxed">
-            تتيح المنصة للقطاع الخاص والقطاع غير الربحي والجامعات والأفراد
-            والجهات الحكومية وهيئات التطوير العمل على منصة واحدة، مع وضوح
-            في الأدوار والفرص والمسؤوليات.
+            إتاحة تقارير ولوحات قياس تدعم اتخاذ القرار لدى الإمارة والوزارات
+            والجهات المانحة والقطاع الخاص، بما يسهم في توجيه الموارد نحو
+            المشاريع الأعلى أثرًا.
           </p>
         </div>
-        <div className="rounded-lg border border-brand-border bg-white p-4">
-          <h3 className="text-sm font-semibold text-brand-text mb-2">
-            مناسبة للعروض الرسمية
-          </h3>
-          <p className="text-xs text-gray-600 leading-relaxed">
-            تم تصميم هذا الديمو ليتناسب مع العروض الرسمية أمام صناع القرار
-            والقطاعات المختلفة، مع واجهة بسيطة وواضحة وخطوط وألوان متوافقة
-            مع الهوية الوطنية.
-          </p>
-        </div>
-      </div>
+      </section>
     </div>
   );
 };
