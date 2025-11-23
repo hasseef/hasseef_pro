@@ -9,17 +9,28 @@ import { GovernmentPage } from "./pages/Government";
 
 export default function App() {
   const [view, setView] = useState("landing");
+  const [pickedAccountId, setPickedAccountId] = useState(null);
 
   const renderView = () => {
     switch (view) {
       case "landing":
         return <Landing onChangeView={setView} />;
       case "accounts":
-        return <AccountsDemo />;
+        return <AccountsDemo initialAccountId={pickedAccountId} />;
       case "login":
-        return <Login onChangeView={setView} />;
+        return (
+          <Login
+            onChangeView={setView}
+            onPickAccount={setPickedAccountId}
+          />
+        );
       case "signup":
-        return <Signup onChangeView={setView} />;
+        return (
+          <Signup
+            onChangeView={setView}
+            onPickAccount={setPickedAccountId}
+          />
+        );
       case "about":
         return <AboutFlow />;
       case "government":
@@ -36,12 +47,12 @@ export default function App() {
       <footer className="border-t border-brand-border bg-white">
         <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-2">
           <p className="text-[11px] text-gray-500">
-            هذا ديمو تشغيلي بصري لمنصة حصيف، مخصص للعروض أمام الجهات الحكومية،
-            الجامعات، والقطاعين الخاص وغير الربحي.
+            هذا نموذج تشغيلي بصري لمنصة حصيف، مخصص للعروض أمام الإمارة،
+            الوزارات، الجامعات، القطاع الخاص، القطاع غير الربحي، والجهات المانحة.
           </p>
           <p className="text-[11px] text-gray-500">
-            يمكن ربط هذه الواجهة لاحقًا بأنظمة الدخول والتكاملات الفعلية
-            وقواعد البيانات.
+            يمكن ربط هذه الواجهة لاحقًا بقواعد بيانات وتكاملات فعلية حسب الملف
+            التشغيلي المعتمد.
           </p>
         </div>
       </footer>

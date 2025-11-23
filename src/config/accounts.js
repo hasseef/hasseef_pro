@@ -1,54 +1,80 @@
+// المكوّنات الأساسية في منصة حصيف (19 مكوّن)
+export const CORE_MODULES = [
+  { id: "solutions", label: "الحلول", },
+  { id: "projects", label: "المشاريع", },
+  { id: "events", label: "الفعاليات", },
+  { id: "facilities", label: "المرافق", },
+  { id: "incubation", label: "الاحتضان", },
+  { id: "advisory", label: "الاستشارات", },
+  { id: "volunteering", label: "التطوع", },
+  { id: "employment", label: "التوظيف", },
+  { id: "coop-training", label: "التدريب التعاوني", },
+  { id: "trainers", label: "المتحدثون والمدربون", },
+  { id: "sponsorships", label: "الرعايات", },
+  { id: "funding", label: "التمويل", },
+  { id: "partnerships", label: "الشراكات", },
+  { id: "wallet", label: "محافظ الجهات", },
+  { id: "investment", label: "الاستثمار", },
+  { id: "vision2030", label: "رؤية 2030", },
+  { id: "gov-link", label: "الربط الحكومي", },
+  { id: "reports", label: "التقارير", },
+  { id: "integration", label: "التكاملات", }
+];
+
 export const ACCOUNTS = [
   {
     id: "emirate",
     label: "حساب الإمارة",
     typeLabel: "إمارة المنطقة",
+    modules: ["projects", "events", "facilities", "volunteering", "vision2030", "gov-link", "reports"],
     description:
-      "تمكين إمارة المنطقة من متابعة المشاريع والمبادرات والفعاليات والشراكات في النطاق الجغرافي وربطها بمستهدفات رؤية 2030، مع إتاحة لوحات قياس تدعم اتخاذ القرار.",
+      "تمكين إمارة المنطقة من متابعة المشاريع والفعاليات والشراكات في النطاق الجغرافي وربطها بالرؤية 2030.",
     sections: [
       {
-        id: "initiatives",
-        label: "المبادرات والمشاريع",
+        id: "projects",
+        label: "المشاريع في المنطقة",
         type: "table",
-        description:
-          "قائمة بالمبادرات والمشاريع التنموية المرتبطة بالمنطقة، مع ربط كل مبادرة ببرنامج الرؤية والجهات الشريكة.",
-        columns: ["اسم المبادرة", "البرنامج", "الجهة المالكة", "المنطقة", "حالة التنفيذ"],
-        formTitle: "تسجيل مبادرة/مشروع جديد",
+        description: "عرض المشاريع التنموية ضمن نطاق الإمارة.",
+        columns: ["اسم المشروع", "القطاع", "المنطقة", "نسبة الإنجاز"],
+        formTitle: "تسجيل مشروع جديد",
         formFields: [
-          { name: "title", label: "اسم المبادرة/المشروع", type: "text" },
-          { name: "program", label: "برنامج الرؤية المرتبط", type: "text" },
-          { name: "owner", label: "الجهة المالكة", type: "text" },
+          { name: "name", label: "اسم المشروع", type: "text" },
+          { name: "sector", label: "القطاع", type: "text" },
           { name: "region", label: "المنطقة", type: "text" },
-          { name: "status", label: "حالة التنفيذ", type: "select", options: ["قيد الدراسة", "قيد التنفيذ", "منجز"] }
+          { name: "progress", label: "نسبة الإنجاز", type: "number" }
         ]
       },
       {
         id: "events",
         label: "طلبات الفعاليات",
         type: "table",
-        description:
-          "متابعة طلبات الفعاليات (مؤتمرات، ورش، معارض) واعتمادها وربطها بالمسح الأمني والجهات المشاركة.",
+        description: "متابعة طلبات الفعاليات واعتمادها.",
         columns: ["اسم الفعالية", "الجهة المنظمة", "الموقع", "التاريخ", "الحالة"],
-        formTitle: "تسجيل طلب فعالية جديد",
+        formTitle: "تسجيل فعالية جديدة",
         formFields: [
-          { name: "name", label: "اسم الفعالية", type: "text" },
+          { name: "event", label: "اسم الفعالية", type: "text" },
           { name: "organizer", label: "الجهة المنظمة", type: "text" },
-          { name: "place", label: "الموقع المقترح", type: "text" },
-          { name: "date", label: "تاريخ الفعالية", type: "date" },
-          { name: "notes", label: "ملاحظات إضافية", type: "textarea" }
+          { name: "place", label: "الموقع", type: "text" },
+          { name: "date", label: "التاريخ", type: "date" }
         ]
       },
       {
-        id: "dashboards",
-        label: "لوحات المتابعة",
-        type: "cards",
-        description:
-          "نماذج لبطاقات متابعة رقمية تُمكّن الإمارة من قراءة الوضع التنموي للمنطقة بسرعة.",
-        cards: [
-          { id: "kpi1", label: "عدد المشاريع الفعّالة", value: "128 مشروعًا" },
-          { id: "kpi2", label: "الفرص قيد الدراسة", value: "32 فرصة" },
-          { id: "kpi3", label: "المبادرات المرتبطة بالرؤية", value: "94٪" }
-        ]
+        id: "vision",
+        label: "تمثيل الرؤية 2030",
+        type: "vision",
+        description: "ربط مشاريع المنطقة ببرامج وأهداف رؤية المملكة 2030."
+      },
+      {
+        id: "govlink",
+        label: "الربط بالجهات والهيئات",
+        type: "govlink",
+        description: "ربط المشاريع بالجهات الحكومية وهيئات التطوير في المنطقة."
+      },
+      {
+        id: "reports",
+        label: "مركز التقارير",
+        type: "reports",
+        description: "تقارير ومؤشرات عامة حول مشاريع وفعاليات الإمارة."
       }
     ]
   },
@@ -56,39 +82,41 @@ export const ACCOUNTS = [
     id: "dev-authority",
     label: "حساب هيئة التطوير",
     typeLabel: "هيئة تطوير",
+    modules: ["projects", "facilities", "investment", "vision2030", "gov-link", "reports"],
     description:
-      "إدارة المشاريع الكبرى والحلول التنموية الواردة، والفرص الاستثمارية، والمرافق في نطاق هيئة التطوير، مع إمكانية مواءمة هذه المشاريع مع الخطط المكانية للمنطقة.",
+      "إدارة المشاريع الاستراتيجية والمرافق والفرص الاستثمارية ضمن نطاق هيئة التطوير.",
     sections: [
       {
         id: "strategic-projects",
         label: "المشاريع الاستراتيجية",
         type: "table",
-        description:
-          "المشاريع الكبرى التي تشرف عليها هيئة التطوير ومراحل التنفيذ والشركاء الرئيسيون.",
-        columns: ["اسم المشروع", "القطاع", "المنطقة", "نسبة الإنجاز", "الشركاء"],
+        description: "المشاريع الكبرى التي تشرف عليها هيئة التطوير.",
+        columns: ["اسم المشروع", "القطاع", "المنطقة", "نسبة الإنجاز"],
         formTitle: "إضافة مشروع استراتيجي",
         formFields: [
-          { name: "title", label: "اسم المشروع", type: "text" },
+          { name: "name", label: "اسم المشروع", type: "text" },
           { name: "sector", label: "القطاع", type: "text" },
-          { name: "region", label: "المنطقة", type: "text" },
-          { name: "progress", label: "نسبة الإنجاز المتوقعة", type: "number" },
-          { name: "partners", label: "الشركاء الرئيسيون", type: "textarea" }
+          { name: "region", label: "المنطقة", type: "text" }
         ]
       },
       {
         id: "assets",
         label: "المرافق والأصول",
         type: "table",
-        description:
-          "المرافق التي يمكن إتاحتها كمواقع للفعاليات أو كمشاريع استثمارية ضمن نطاق الهيئة.",
-        columns: ["اسم المرفق", "النوع", "الموقع", "حالة الإتاحة", "ملاحظات"],
-        formTitle: "تسجيل مرفق/أصل",
+        description: "المرافق التي يمكن استثمارها أو استخدامها للفعاليات.",
+        columns: ["اسم المرفق", "النوع", "الموقع", "حالة الإتاحة"],
+        formTitle: "تسجيل مرفق",
         formFields: [
-          { name: "name", label: "اسم المرفق", type: "text" },
-          { name: "type", label: "نوع المرفق", type: "text" },
-          { name: "location", label: "الموقع", type: "text" },
-          { name: "availability", label: "حالة الإتاحة", type: "select", options: ["متاح", "غير متاح", "يتطلب تنسيق"] }
+          { name: "facility", label: "اسم المرفق", type: "text" },
+          { name: "type", label: "النوع", type: "text" },
+          { name: "location", label: "الموقع", type: "text" }
         ]
+      },
+      {
+        id: "reports",
+        label: "تقارير الهيئة",
+        type: "reports",
+        description: "تقارير حول مشاريع ومرافق هيئة التطوير."
       }
     ]
   },
@@ -96,58 +124,68 @@ export const ACCOUNTS = [
     id: "gov-entity",
     label: "حساب الجهة الحكومية",
     typeLabel: "وزارة / جهة حكومية",
+    modules: ["solutions", "projects", "events", "vision2030", "gov-link", "integration", "reports"],
     description:
-      "طرح احتياجات وتحديات الجهة واستقبال الحلول وربط المبادرات ببرامج وأهداف رؤية 2030، مع تمكين قياس الأثر وتحسين كفاءة الإنفاق.",
+      "طرح احتياجات الجهة واستقبال الحلول والمشاريع وربطها بالرؤية 2030.",
     sections: [
       {
         id: "needs",
         label: "احتياجات الجهة",
         type: "table",
-        description: "عرض التحديات والاحتياجات المطروحة للقطاعات الأخرى كفرص حلول.",
-        columns: ["عنوان الاحتياج", "القطاع المستهدف", "تاريخ الطرح", "حالة الحلول"],
-        formTitle: "إضافة احتياج جديد",
+        description: "التحديات المطروحة كفرص حلول.",
+        columns: ["عنوان الاحتياج", "القطاع", "المنطقة", "حالة الحلول"],
+        formTitle: "إضافة احتياج",
         formFields: [
           { name: "title", label: "عنوان الاحتياج", type: "text" },
-          { name: "sector", label: "القطاع المستهدف", type: "text" },
-          { name: "region", label: "المنطقة", type: "text" },
-          { name: "visionProgram", label: "برنامج الرؤية المرتبط", type: "text" },
-          { name: "details", label: "تفاصيل مختصرة", type: "textarea" }
+          { name: "sector", label: "القطاع", type: "text" },
+          { name: "region", label: "المنطقة", type: "text" }
         ]
       },
       {
-        id: "gov-programs",
-        label: "البرامج والمبادرات",
+        id: "programs",
+        label: "برامج الجهة",
         type: "table",
-        description:
-          "نماذج للبرامج التي تطلقها الجهة ويمكن ربطها بحلول مقدمة من القطاعات الأخرى.",
-        columns: ["اسم البرنامج", "المجال", "الفئة المستهدفة", "مرتبطة بالرؤية"],
-        formTitle: "تسجيل برنامج/مبادرة",
+        description: "برامج ومبادرات الجهة الحكومية.",
+        columns: ["اسم البرنامج", "المجال", "الفئة المستهدفة"],
+        formTitle: "تسجيل برنامج",
         formFields: [
-          { name: "name", label: "اسم البرنامج/المبادرة", type: "text" },
+          { name: "name", label: "اسم البرنامج", type: "text" },
           { name: "domain", label: "المجال", type: "text" },
-          { name: "target", label: "الفئة المستهدفة", type: "text" },
-          { name: "visionLinked", label: "مرتبطة ببرنامج رؤية", type: "select", options: ["نعم", "لا"] }
+          { name: "target", label: "الفئة المستهدفة", type: "text" }
         ]
       },
       {
-        id: "api-demo",
+        id: "vision",
+        label: "ربط البرامج بالرؤية 2030",
+        type: "vision",
+        description: "تحديد برنامج الرؤية والأهداف المرتبطة ببرامج الجهة."
+      },
+      {
+        id: "govlink",
+        label: "الربط بالجهات الشريكة",
+        type: "govlink",
+        description: "تحديد الجهات الحكومية الشريكة في تنفيذ البرامج."
+      },
+      {
+        id: "api",
         label: "تكاملات API (ديمو)",
         type: "code",
-        description:
-          "نموذج مبسّط لواجهة برمجية يمكن أن تعتمدها الجهة الحكومية لربط أنظمتها الداخلية بمنصة حصيف.",
+        description: "مثال واجهة برمجية لربط أنظمة الجهة بمنصة حصيف.",
         code: `POST /api/v1/government/needs
 Content-Type: application/json
 
 {
-  "entity_id": "MOE-001",
-  "need_title": "تفعيل برامج توجيه مهني لطلاب المرحلة الثانوية",
+  "entity_id": "GOV-001",
+  "need_title": "مثال احتياج",
   "sector": "التعليم",
-  "region": "منطقة حائل",
-  "vision_program": "تنمية القدرات البشرية",
-  "details": "تفصيل قصير يوضح التحدي والفرصة المقترحة.",
-  "proposed_budget_range": "500000-1000000",
-  "preferred_partners": ["جامعات", "قطاع خاص", "قطاع غير ربحي"]
+  "region": "منطقة حائل"
 }`
+      },
+      {
+        id: "reports",
+        label: "تقارير الجهة الحكومية",
+        type: "reports",
+        description: "تقارير حول البرامج والمشاريع المرتبطة بالجهة."
       }
     ]
   },
@@ -155,39 +193,39 @@ Content-Type: application/json
     id: "private-sector",
     label: "حساب القطاع الخاص",
     typeLabel: "شركة / منشأة",
+    modules: ["sponsorships", "funding", "partnerships", "wallet", "reports"],
     description:
-      "منصة موحدة لتفعيل برامج المسؤولية الاجتماعية والرعايات والاستثمار في المشاريع والفعاليات والمرافق، مع تقارير أثر تدعم سمعة المنشأة ومسارها الاستثماري.",
+      "تفعيل برامج المسؤولية الاجتماعية والرعايات والاستثمار المجتمعي.",
     sections: [
       {
-        id: "csr-opps",
+        id: "csr",
         label: "فرص المسؤولية الاجتماعية",
         type: "table",
-        description: "المشاريع والمبادرات المؤهلة للدعم ضمن برامج المسؤولية الاجتماعية.",
-        columns: ["اسم المشروع", "الجهة المنفذة", "المجال", "المنطقة", "قيمة مقترحة"],
-        formTitle: "تسجيل فرصة مسؤولية اجتماعية",
+        description: "مشاريع مؤهلة للدعم ضمن المسؤولية الاجتماعية.",
+        columns: ["اسم المشروع", "الجهة المنفذة", "المجال", "المنطقة"],
+        formTitle: "تسجيل فرصة دعم",
         formFields: [
           { name: "project", label: "اسم المشروع", type: "text" },
-          { name: "ngo", label: "الجهة المنفذة", type: "text" },
-          { name: "domain", label: "المجال", type: "text" },
-          { name: "region", label: "المنطقة", type: "text" },
-          { name: "value", label: "القيمة المقترحة", type: "number" }
+          { name: "ngo", label: "الجهة المنفذة", type: "text" }
         ]
       },
       {
         id: "sponsorships",
-        label: "الرعايات والفعاليات",
+        label: "الرعايات",
         type: "table",
-        description:
-          "الفعاليات التي يمكن للقطاع الخاص رعايتها تجاريًا أو مجتمعيًا ضمن هوية موحدة.",
-        columns: ["اسم الفعالية", "المجال", "الموقع", "التاريخ", "نوع الرعاية"],
-        formTitle: "إضافة فرصة رعاية",
+        description: "فرص رعاية الفعاليات والبرامج.",
+        columns: ["اسم الفعالية", "المجال", "الموقع", "نوع الرعاية"],
+        formTitle: "تسجيل رعاية",
         formFields: [
           { name: "event", label: "اسم الفعالية", type: "text" },
-          { name: "domain", label: "المجال", type: "text" },
-          { name: "place", label: "الموقع", type: "text" },
-          { name: "date", label: "التاريخ", type: "date" },
-          { name: "sponsorshipType", label: "نوع الرعاية", type: "text" }
+          { name: "type", label: "نوع الرعاية", type: "text" }
         ]
+      },
+      {
+        id: "reports",
+        label: "تقارير المسؤولية الاجتماعية",
+        type: "reports",
+        description: "مؤشرات حول مساهمات الشركة وأثرها."
       }
     ]
   },
@@ -195,37 +233,39 @@ Content-Type: application/json
     id: "nonprofit",
     label: "حساب القطاع غير الربحي",
     typeLabel: "جمعية / مؤسسة غير ربحية",
+    modules: ["solutions", "projects", "volunteering", "funding", "partnerships", "reports"],
     description:
-      "طرح المشاريع التنموية، وطلبات التمويل، وتنظيم التطوع، وإدارة الفعاليات والشراكات، مع ربط الأثر بمستهدفات برامج رؤية 2030.",
+      "طرح المشاريع التنموية وطلبات التمويل وفرص التطوع والشراكات.",
     sections: [
       {
         id: "projects",
         label: "المشاريع التنموية",
         type: "table",
-        description: "المشاريع المطلوب تمويلها أو الجاري تنفيذها مع حالة التمويل والإنجاز.",
-        columns: ["اسم المشروع", "المجال", "المنطقة", "حالة التمويل", "نسبة الإنجاز"],
-        formTitle: "إضافة مشروع تنموي",
+        description: "المشاريع المطلوب تمويلها أو الجاري تنفيذها.",
+        columns: ["اسم المشروع", "المجال", "المنطقة", "حالة التمويل"],
+        formTitle: "إضافة مشروع",
         formFields: [
           { name: "name", label: "اسم المشروع", type: "text" },
-          { name: "domain", label: "المجال", type: "text" },
-          { name: "region", label: "المنطقة", type: "text" },
-          { name: "fundStatus", label: "حالة التمويل", type: "text" }
+          { name: "domain", label: "المجال", type: "text" }
         ]
       },
       {
         id: "volunteering",
         label: "فرص التطوع",
         type: "table",
-        description:
-          "فرص التطوع المرتبطة بالمشاريع والفعاليات، مع توضيح نوع المهمة وعدد الساعات.",
-        columns: ["اسم الفرصة", "المشروع المرتبط", "نوع المهمة", "عدد الساعات", "الحالة"],
-        formTitle: "تسجيل فرصة تطوعية",
+        description: "فرص التطوع المرتبطة بالمشاريع.",
+        columns: ["اسم الفرصة", "المشروع", "نوع المهمة", "عدد الساعات"],
+        formTitle: "تسجيل فرصة تطوع",
         formFields: [
           { name: "title", label: "اسم الفرصة", type: "text" },
-          { name: "project", label: "المشروع المرتبط", type: "text" },
-          { name: "taskType", label: "نوع المهمة", type: "text" },
-          { name: "hours", label: "عدد الساعات", type: "number" }
+          { name: "project", label: "المشروع", type: "text" }
         ]
+      },
+      {
+        id: "reports",
+        label: "تقارير الأثر",
+        type: "reports",
+        description: "ملخص لأثر مشاريع الجهة وعدد المستفيدين وساعات التطوع."
       }
     ]
   },
@@ -233,37 +273,39 @@ Content-Type: application/json
     id: "university",
     label: "حساب الجامعات",
     typeLabel: "جامعة / كلية",
+    modules: ["advisory", "coop-training", "reports", "vision2030", "integration"],
     description:
-      "تعزيز الدور العلمي للجامعة في مراجعة المشاريع وتقديم الاستشارات وإتاحة الفرص التدريبية، وربط البحث العلمي بالأولويات التنموية.",
+      "التعزيز العلمي للمشاريع وتقديم فرص التدريب التعاوني.",
     sections: [
       {
-        id: "scientific-review",
+        id: "scientific",
         label: "التعزيز العلمي",
         type: "table",
-        description: "المشاريع المحوّلة للجامعة للمراجعة العلمية أو إعداد نماذج القياس.",
-        columns: ["اسم المشروع", "الجهة المالكة", "الكلية/المركز", "نوع المشاركة", "الحالة"],
+        description: "المشاريع المحوّلة للمراجعة العلمية.",
+        columns: ["اسم المشروع", "الجهة", "الكلية/المركز", "نوع المشاركة"],
         formTitle: "تسجيل مشاركة علمية",
         formFields: [
           { name: "project", label: "اسم المشروع", type: "text" },
-          { name: "owner", label: "الجهة المالكة", type: "text" },
-          { name: "college", label: "الكلية/المركز", type: "text" },
-          { name: "participationType", label: "نوع المشاركة", type: "text" }
+          { name: "college", label: "الكلية/المركز", type: "text" }
         ]
       },
       {
         id: "training",
         label: "الفرص التدريبية",
         type: "table",
-        description:
-          "البرامج التدريبية والتعاونية المتاحة لطلاب الجامعة من خلال المشاريع المسجلة في المنصة.",
-        columns: ["اسم البرنامج", "الجهة المستضيفة", "المدة", "التخصصات المستهدفة"],
+        description: "فرص التدريب التعاوني المتاحة للطلاب.",
+        columns: ["اسم البرنامج", "الجهة", "المدة"],
         formTitle: "إضافة فرصة تدريبية",
         formFields: [
           { name: "program", label: "اسم البرنامج", type: "text" },
-          { name: "host", label: "الجهة المستضيفة", type: "text" },
-          { name: "duration", label: "المدة", type: "text" },
-          { name: "majors", label: "التخصصات المستهدفة", type: "textarea" }
+          { name: "host", label: "الجهة", type: "text" }
         ]
+      },
+      {
+        id: "reports",
+        label: "تقارير الجامعة",
+        type: "reports",
+        description: "مؤشرات حول مساهمة الجامعة في المنصة."
       }
     ]
   },
@@ -271,35 +313,38 @@ Content-Type: application/json
     id: "donor",
     label: "حساب المانحين",
     typeLabel: "صندوق / جهة مانحة",
+    modules: ["funding", "wallet", "reports", "vision2030"],
     description:
-      "استعراض المشاريع المؤهلة للتمويل وإدارة المحفظة ومتابعة تقارير الأثر التنموي وربط ذلك باستراتيجيات الجهة المانحة.",
+      "استعراض فرص التمويل وإدارة محفظة المانح وتقارير الأثر.",
     sections: [
       {
         id: "funding-opps",
         label: "فرص التمويل",
         type: "table",
-        description:
-          "قائمة بالمشاريع المؤهلة للتمويل مع معلومات مختصرة عن الأثر المتوقع وقيمة التمويل المطلوبة.",
-        columns: ["اسم المشروع", "الجهة المنفذة", "المجال", "قيمة التمويل المطلوبة"],
-        formTitle: "إضافة فرصة تمويل",
+        description: "قائمة بالمشاريع المؤهلة للتمويل.",
+        columns: ["اسم المشروع", "الجهة المنفذة", "المجال", "قيمة التمويل"],
+        formTitle: "تسجيل فرصة تمويل",
         formFields: [
           { name: "project", label: "اسم المشروع", type: "text" },
-          { name: "ngo", label: "الجهة المنفذة", type: "text" },
-          { name: "domain", label: "المجال", type: "text" },
-          { name: "amount", label: "قيمة التمويل المطلوبة", type: "number" }
+          { name: "amount", label: "قيمة التمويل", type: "number" }
         ]
       },
       {
         id: "portfolio",
         label: "محفظة المانح",
         type: "cards",
-        description:
-          "نماذج لبطاقات تلخص وضع المحفظة التمويلية للجهة المانحة داخل المنصة.",
+        description: "بطاقات تلخص وضع المحفظة التمويلية.",
         cards: [
-          { id: "pf1", label: "عدد المشاريع الممولة", value: "24 مشروعًا" },
-          { id: "pf2", label: "إجمالي الالتزامات", value: "18 مليون ريال" },
+          { id: "pf1", label: "عدد المشاريع الممولة", value: "24" },
+          { id: "pf2", label: "إجمالي الالتزامات (مليون ريال)", value: "18" },
           { id: "pf3", label: "متوسط نسبة الإنجاز", value: "76٪" }
         ]
+      },
+      {
+        id: "reports",
+        label: "تقارير المانح",
+        type: "reports",
+        description: "تقارير حول المشاريع الممولة وربطها بالرؤية 2030."
       }
     ]
   },
@@ -307,35 +352,38 @@ Content-Type: application/json
     id: "individual",
     label: "حساب الأفراد",
     typeLabel: "فرد / شاب/ـة",
+    modules: ["solutions", "volunteering", "coop-training", "employment", "reports"],
     description:
-      "تمكين الأفراد من طرح الحلول والمبادرات وبناء ملف مهني تطوعي وتدريبي مرتبط باهتماماتهم، مع تعزيز ارتباطهم برؤية 2030.",
+      "تمكين الأفراد من طرح الحلول وبناء ملف مهني وتطوعي مرتبط بالمشاريع.",
     sections: [
       {
         id: "my-initiatives",
         label: "مبادراتي",
         type: "table",
-        description:
-          "المبادرات والحلول التي طرحها الفرد مع حالة دراستها والجهات المهتمة بها.",
-        columns: ["اسم المبادرة", "نوع المبادرة", "القطاع المستهدف", "حالة الدراسة"],
-        formTitle: "تسجيل مبادرة جديدة",
+        description: "المبادرات التي يقترحها الفرد.",
+        columns: ["اسم المبادرة", "القطاع المستهدف", "الحالة"],
+        formTitle: "تسجيل مبادرة",
         formFields: [
           { name: "title", label: "اسم المبادرة", type: "text" },
-          { name: "category", label: "نوع المبادرة", type: "text" },
-          { name: "targetSector", label: "القطاع المستهدف", type: "text" },
-          { name: "summary", label: "ملخص الفكرة", type: "textarea" }
+          { name: "sector", label: "القطاع المستهدف", type: "text" }
         ]
       },
       {
         id: "profile",
         label: "ملفي التنموي",
         type: "cards",
-        description:
-          "بطاقات تعريفية مختصرة تلخص مسار الفرد التطوعي والتدريبي والمهني.",
+        description: "ملخص لمسار الفرد التطوعي والتدريبي.",
         cards: [
-          { id: "cv1", label: "ساعات التطوع المعتمدة", value: "120 ساعة" },
+          { id: "cv1", label: "ساعات التطوع", value: "120 ساعة" },
           { id: "cv2", label: "البرامج التدريبية", value: "8 برامج" },
           { id: "cv3", label: "المشاريع المشاركة", value: "5 مشاريع" }
         ]
+      },
+      {
+        id: "reports",
+        label: "تقاريري",
+        type: "reports",
+        description: "تقارير عن مشاركة الفرد في المنصة."
       }
     ]
   }

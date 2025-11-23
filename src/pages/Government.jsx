@@ -8,58 +8,52 @@ export const GovernmentPage = () => {
           حصيف والقطاع الحكومي
         </h1>
         <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
-          يوفّر نظام حصيف للجهات الحكومية وإمارات المناطق وهيئات التطوير إطارًا
-          تشغيليًا واضحًا لاستقبال الحلول والمبادرات والمشاريع والفعاليات
-          وربطها بشكل منهجي ببرامج وأهداف ومؤشرات رؤية المملكة 2030، مع تمكين
-          المتابعة اللحظية للأثر التنموي ورفع كفاءة الإنفاق.
+          يهيئ هذا النموذج منصة حصيف لتكون قناة موحّدة تستقبل الحلول والمشاريع
+          والفعاليات من المجتمع والجهات، وتعرضها على الإمارة والوزارات
+          والهيئات بطريقة منظمة ومربوطة بالرؤية 2030.
         </p>
       </div>
-
-      <div className="grid md:grid-cols-3 gap-4">
+      <div className="grid md:grid-cols-3 gap-4 text-[11px] md:text-xs">
         <div className="rounded-lg border border-brand-border bg-white p-4">
           <h3 className="text-sm font-semibold text-brand-text mb-2">
             دور إمارة المنطقة
           </h3>
-          <p className="text-xs text-gray-600 leading-relaxed">
-            تتابع الإمارة عبر منصة حصيف المشاريع والمبادرات والفعاليات داخل
-            النطاق الجغرافي للمنطقة، مع استعراض الشركات الأكثر مساهمة، والجمعيات
-            الفاعلة، والفرص المتاحة للتمويل والرعاية، إضافة إلى لوحات مرتبطة
-            بمستهدفات الرؤية.
+          <p className="text-gray-600 leading-relaxed">
+            متابعة المشاريع والفعاليات والشراكات في المنطقة، واعتماد
+            الفعاليات، والتعرّف على الجهات الأكثر مساهمة والفرص التنموية
+            المتاحة.
           </p>
         </div>
         <div className="rounded-lg border border-brand-border bg-white p-4">
           <h3 className="text-sm font-semibold text-brand-text mb-2">
             دور الوزارات والهيئات
           </h3>
-          <p className="text-xs text-gray-600 leading-relaxed">
-            يمكن للوزارات والهيئات طرح احتياجاتها وتحدياتها كفرص حلول أمام
-            القطاعات الأخرى، واستقبال المبادرات والمشاريع المرتبطة بنطاق عملها،
-            ومتابعة التنفيذ عبر مؤشرات أداء واضحة وتقارير دورية.
+          <p className="text-gray-600 leading-relaxed">
+            طرح احتياجات وتحديات الجهة كفرص حلول، ومتابعة البرامج والمشاريع
+            المرتبطة بنطاق عملها، وقراءة مؤشرات الأثر المرتبطة بالرؤية.
           </p>
         </div>
         <div className="rounded-lg border border-brand-border bg-white p-4">
           <h3 className="text-sm font-semibold text-brand-text mb-2">
             الربط مع رؤية 2030
           </h3>
-          <p className="text-xs text-gray-600 leading-relaxed">
-            يتيح حصيف ربط كل مشروع أو مبادرة أو فعالية ببرامج الرؤية وأهدافها
-            ومؤشراتها، مع إمكانية تصدير التقارير والبيانات لدعم عمل الوحدات
-            الإشرافية ومكاتب تحقيق الرؤية في الأجهزة الحكومية.
+          <p className="text-gray-600 leading-relaxed">
+            ربط المشاريع والبرامج والفعاليات ببرامج الرؤية وأهدافها ومؤشراتها،
+            مع إمكانية تصدير التقارير لوحدات ومكاتب تحقيق الرؤية في الأجهزة
+            الحكومية.
           </p>
         </div>
       </div>
-
-      <section className="rounded-lg border border-brand-border bg-white p-4 space-y-3">
+      <section className="rounded-lg border border-brand-border bg-white p-4 space-y-3 text-[11px] md:text-xs">
         <h2 className="text-sm md:text-base font-semibold text-brand-text">
-          أمثلة لواجهات ربط فني (Integration) مع أنظمة الجهات
+          مثال تكامل فني (Integration) مع أنظمة جهة حكومية
         </h2>
-        <p className="text-[11px] md:text-xs text-gray-600 leading-relaxed">
-          يوضّح المثال التالي نموذجًا مبسّطًا لكيفية ربط أنظمة الجهة الحكومية
-          بمنصة حصيف عبر واجهات برمجية (APIs)، سواء لاستقبال احتياجات الجهة أو
-          تحديث حالة المشاريع والمبادرات المرتبطة بها.
+        <p className="text-gray-600 leading-relaxed">
+          المثال التالي توضيحي لكيف يمكن لجهة حكومية مزامنة بيانات مشاريعها
+          مع منصة حصيف عبر واجهة برمجية:
         </p>
-        <div className="rounded-lg border border-brand-border bg-gray-900 text-gray-100 text-[11px] md:text-xs p-3 overflow-x-auto">
-          <pre className="whitespace-pre leading-relaxed">
+        <div className="rounded-lg border border-brand-border bg-gray-900 text-gray-100 p-3 overflow-x-auto">
+          <pre className="whitespace-pre text-[10px] md:text-xs leading-relaxed">
 POST /api/v1/projects/sync
 Content-Type: application/json
 
@@ -67,12 +61,10 @@ Content-Type: application/json
   {
     "project_id": "GOV-PRJ-001",
     "entity_id": "وزارة التعليم",
-    "title": "برنامج توجيه مهني لطلاب المرحلة الثانوية",
+    "title": "برنامج توجيه مهني لطلاب الثانوية",
     "region": "منطقة حائل",
     "vision_program": "تنمية القدرات البشرية",
-    "status": "قيد التنفيذ",
-    "kpi_students_reached": 1200,
-    "kpi_schools": 24
+    "status": "قيد التنفيذ"
   },
   {
     "project_id": "GOV-PRJ-002",
@@ -80,15 +72,14 @@ Content-Type: application/json
     "title": "مبادرة عيادة مجتمعية متنقلة",
     "region": "منطقة الحدود الشمالية",
     "vision_program": "جودة الحياة",
-    "status": "قيد الدراسة",
-    "kpi_visits_target": 3000
+    "status": "قيد الدراسة"
   }
 ]
           </pre>
         </div>
-        <p className="text-[11px] text-gray-500">
-          يمكن تخصيص هذه النماذج فنيًا بالتعاون مع فرق التحول الرقمي في الجهات
-          الحكومية ومكاتب تحقيق الرؤية، وفقًا لمستوى النضج التقني لكل جهة.
+        <p className="text-[10px] text-gray-500">
+          يمكن تخصيص النماذج الحقيقية بالتعاون مع فرق التحول الرقمي في
+          الوزارات والهيئات، بحسب احتياج كل جهة.
         </p>
       </section>
     </div>

@@ -1,61 +1,41 @@
 import React from "react";
 import { PrimaryButton, GhostButton } from "../components/common/Buttons";
+import { ACCOUNTS } from "../config/accounts";
 
-export const Login = ({ onChangeView }) => {
+export const Login = ({ onChangeView, onPickAccount }) => {
   return (
-    <div className="min-height-[70vh] flex items-center justify-center px-4 py-10">
-      <div className="w-full max-w-md rounded-lg border border-brand-border bg-white p-6 space-y-5">
+    <div className="min-h-[70vh] flex items-center justify-center px-4 py-10">
+      <div className="w-full max-w-lg rounded-lg border border-brand-border bg-white p-6 space-y-5">
         <div className="space-y-1 text-center">
           <h2 className="text-lg font-semibold text-brand-text">
-            تسجيل الدخول إلى منصة حصيف
+            تسجيل الدخول إلى منصة حصيف (ديمو)
           </h2>
           <p className="text-xs text-gray-600">
-            هذه شاشة ديمو لشرح رحلة المستخدم أمام الجهات، ويمكن ربطها لاحقًا
-            بأنظمة الهوية الوطنية أو مزودي الدخول الموحد.
+            يمكن اختيار نوع الحساب لتجربة الواجهة كما تظهر للمستخدم الفعلي.
           </p>
         </div>
-        <div className="space-y-3">
-          <div className="space-y-1.5">
-            <label className="text-xs text-brand-text">البريد الإلكتروني</label>
-            <input
-              type="email"
-              className="w-full rounded-md border border-brand-border bg-white px-3 py-2 text-xs text-brand-text focus:outline-none focus:ring-1 focus:ring-brand-green"
-              placeholder="user@example.com"
-            />
-          </div>
-          <div className="space-y-1.5">
-            <label className="text-xs text-brand-text">كلمة المرور</label>
-            <input
-              type="password"
-              className="w-full rounded-md border border-brand-border bg-white px-3 py-2 text-xs text-brand-text focus:outline-none focus:ring-1 focus:ring-brand-green"
-              placeholder="••••••••"
-            />
-          </div>
+        <div className="grid md:grid-cols-2 gap-3 max-h-64 overflow-y-auto text-[11px]">
+          {ACCOUNTS.map((acc) => (
+            <button
+              key={acc.id}
+              className="rounded-md border border-brand-border bg-gray-50 px-3 py-2 text-right hover:bg-white transition"
+              onClick={() => {
+                onPickAccount(acc.id);
+                onChangeView("accounts");
+              }}
+            >
+              <div className="font-semibold mb-1">{acc.label}</div>
+              <div className="text-[10px] text-gray-500">
+                {acc.typeLabel}
+              </div>
+            </button>
+          ))}
         </div>
-        <div className="space-y-2">
-          <PrimaryButton className="w-full" onClick={() => onChangeView("accounts")}>
-            دخول (عرض الديمو)
-          </PrimaryButton>
+        <div className="pt-2 border-t border-brand-border/70">
           <p className="text-[11px] text-gray-500 text-center">
-            في النسخة التشغيلية الفعلية يتم تفعيل التحكم في الصلاحيات وربط
-            كل مستخدم بالحساب المناسب.
+            في النسخة التشغيلية الفعلية سيتم ربط الدخول بأنظمة الهوية الوطنية
+            أو حسابات الجهات.
           </p>
-        </div>
-        <div className="pt-2 border-t border-brand-border/70 space-y-2">
-          <p className="text-[11px] text-gray-500 text-center">
-            تجربة الدخول مباشرة كأحد الحسابات:
-          </p>
-          <div className="flex flex-wrap gap-2 justify-center">
-            <GhostButton onClick={() => onChangeView("accounts")}>
-              دخول كإمارة (ديمو)
-            </GhostButton>
-            <GhostButton onClick={() => onChangeView("accounts")}>
-              دخول كجهة مانحة (ديمو)
-            </GhostButton>
-            <GhostButton onClick={() => onChangeView("accounts")}>
-              دخول كجهة غير ربحية (ديمو)
-            </GhostButton>
-          </div>
         </div>
       </div>
     </div>

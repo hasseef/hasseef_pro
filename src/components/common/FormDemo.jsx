@@ -23,20 +23,6 @@ export const FormDemo = ({ title, fields = [] }) => {
                 rows={3}
                 placeholder="نص تجريبي..."
               />
-            ) : field.type === "select" ? (
-              <select
-                className="w-full rounded-md border border-brand-border bg-white px-3 py-2 text-[11px] md:text-xs text-brand-text focus:outline-none focus:ring-1 focus:ring-brand-green"
-                defaultValue=""
-              >
-                <option value="" disabled>
-                  اختر…
-                </option>
-                {(field.options || []).map((opt) => (
-                  <option key={opt} value={opt}>
-                    {opt}
-                  </option>
-                ))}
-              </select>
             ) : (
               <input
                 type={field.type || "text"}
@@ -52,8 +38,7 @@ export const FormDemo = ({ title, fields = [] }) => {
         </div>
       </form>
       <p className="text-[10px] text-gray-500 mt-2">
-        هذا النموذج لأغراض العرض فقط، ويمكن ربط الحقول فعليًا بقواعد البيانات
-        وواجهات البرمجة عند الانتقال للمرحلة التطويرية.
+        هذا النموذج لأغراض العرض فقط، ويمكن ربطه فعليًا بقواعد البيانات وواجهات البرمجة لاحقًا.
       </p>
     </div>
   );

@@ -2,28 +2,24 @@ import React from "react";
 
 export const AccountsSidebar = ({ accounts, activeId, onChange }) => {
   return (
-    <aside className="md:w-64 flex-shrink-0 space-y-3">
-      <div className="rounded-lg border border-brand-border bg-white p-3 md:p-4">
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-xs font-semibold text-brand-text">
-            حسابات المنصة
-          </span>
-          <span className="text-[10px] text-gray-500">
-            منصة متعددة الأطراف
-          </span>
-        </div>
-        <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-1">
+    <aside className="w-full md:w-64 flex-shrink-0">
+      <div className="rounded-lg border border-brand-border bg-white p-3 md:p-4 space-y-2">
+        <h2 className="text-xs md:text-sm font-semibold text-brand-text mb-1">
+          حسابات منصة حصيف
+        </h2>
+        <div className="flex flex-col gap-1 max-h-[400px] overflow-y-auto">
           {accounts.map((acc) => (
             <button
               key={acc.id}
               onClick={() => onChange(acc.id)}
-              className={`flex-1 md:flex-none text-right px-3 py-2 rounded-md border text-[11px] md:text-xs transition whitespace-nowrap ${
-                activeId === acc.id
-                  ? "border-brand-green bg-brand-light text-brand-green"
-                  : "border-brand-border bg-white text-brand-text hover:bg-gray-50"
+              className={`text-right text-[11px] md:text-xs px-2 py-1.5 rounded-md border transition ${
+                acc.id === activeId
+                  ? "bg-brand-green text-white border-brand-green"
+                  : "bg-white text-brand-text border-brand-border hover:bg-brand-light"
               }`}
             >
-              {acc.label}
+              <div className="font-semibold">{acc.label}</div>
+              <div className="text-[10px] opacity-80">{acc.typeLabel}</div>
             </button>
           ))}
         </div>

@@ -26,7 +26,7 @@ export const DemoTable = ({ columns }) => (
                 key={col}
                 className="px-4 py-3 text-gray-500 whitespace-nowrap text-xs md:text-sm"
               >
-                بيانات تجريبية للعرض
+                بيانات ديمو
               </td>
             ))}
           </tr>
