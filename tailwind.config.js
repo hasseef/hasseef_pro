@@ -3,19 +3,18 @@ export default {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['system-ui', 'ui-sans-serif', 'sans-serif']
-      },
       colors: {
         brand: {
-          50: "#ecfdf5",
-          100: "#d1fae5",
-          500: "#059669",
-          600: "#047857",
-          700: "#065f46"
+          green: "#006C35",
+          light: "#E5F4EC",
+          border: "#E5E7EB",
+          text: "#374151"
         }
+      },
+      fontFamily: {
+        sans: ["system-ui", "ui-sans-serif", "sans-serif"]
       }
-    },
+    }
   },
   plugins: [],
 };

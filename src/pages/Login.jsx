@@ -3,31 +3,31 @@ import { PrimaryButton, GhostButton } from "../components/common/Buttons";
 
 export const Login = ({ onChangeView }) => {
   return (
-    <div className="min-h-[70vh] flex items-center justify-center px-4">
-      <div className="w-full max-w-md rounded-3xl border border-slate-800 bg-slate-950/70 p-6 shadow-2xl space-y-5">
+    <div className="min-height-[70vh] flex items-center justify-center px-4 py-10">
+      <div className="w-full max-w-md rounded-lg border border-brand-border bg-white p-6 space-y-5">
         <div className="space-y-1 text-center">
-          <h2 className="text-lg font-semibold text-slate-50">
+          <h2 className="text-lg font-semibold text-brand-text">
             تسجيل الدخول إلى منصة حصيف
           </h2>
-          <p className="text-xs text-slate-400">
-            هذه شاشة ديمو للعرض فقط، ويمكن استخدامها لشرح تجربة المستخدم
-            التوقّعية أمام الجهات.
+          <p className="text-xs text-gray-600">
+            هذه شاشة ديمو لشرح رحلة المستخدم أمام الجهات، ويمكن ربطها لاحقًا
+            بأنظمة الهوية الوطنية أو مزودي الدخول الموحد.
           </p>
         </div>
         <div className="space-y-3">
           <div className="space-y-1.5">
-            <label className="text-xs text-slate-300">البريد الإلكتروني</label>
+            <label className="text-xs text-brand-text">البريد الإلكتروني</label>
             <input
               type="email"
-              className="w-full rounded-xl border border-slate-800 bg-slate-900/70 px-3 py-2 text-xs text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full rounded-md border border-brand-border bg-white px-3 py-2 text-xs text-brand-text focus:outline-none focus:ring-1 focus:ring-brand-green"
               placeholder="user@example.com"
             />
           </div>
           <div className="space-y-1.5">
-            <label className="text-xs text-slate-300">كلمة المرور</label>
+            <label className="text-xs text-brand-text">كلمة المرور</label>
             <input
               type="password"
-              className="w-full rounded-xl border border-slate-800 bg-slate-900/70 px-3 py-2 text-xs text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full rounded-md border border-brand-border bg-white px-3 py-2 text-xs text-brand-text focus:outline-none focus:ring-1 focus:ring-brand-green"
               placeholder="••••••••"
             />
           </div>
@@ -36,14 +36,14 @@ export const Login = ({ onChangeView }) => {
           <PrimaryButton className="w-full" onClick={() => onChangeView("accounts")}>
             دخول (عرض الديمو)
           </PrimaryButton>
-          <p className="text-[11px] text-slate-400 text-center">
-            في النسخة الفعلية يتم ربط هذه الشاشة بنظام هوية موحد أو حسابات
-            المنصة، بينما هنا الهدف هو تسهيل عرض الواجهات فقط.
+          <p className="text-[11px] text-gray-500 text-center">
+            في النسخة التشغيلية الفعلية يتم تفعيل التحكم في الصلاحيات وربط
+            كل مستخدم بالحساب المناسب.
           </p>
         </div>
-        <div className="pt-2 border-t border-slate-800/60 space-y-2">
-          <p className="text-[11px] text-slate-400 text-center">
-            تجربة الدخول كأحد حسابات المنصة مباشرة:
+        <div className="pt-2 border-t border-brand-border/70 space-y-2">
+          <p className="text-[11px] text-gray-500 text-center">
+            تجربة الدخول مباشرة كأحد الحسابات:
           </p>
           <div className="flex flex-wrap gap-2 justify-center">
             <GhostButton onClick={() => onChangeView("accounts")}>

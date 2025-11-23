@@ -27,17 +27,18 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950">
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <Header onChangeView={setView} />
       <main className="flex-1">{renderView()}</main>
-      <footer className="border-t border-slate-900 bg-slate-950/90">
+      <footer className="border-t border-brand-border bg-white">
         <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-2">
-          <p className="text-[11px] text-slate-500">
-            هذا ديمو تشغيلي بصري لمنصة حصيف، مخصص للعروض أمام الجهات
-            الحكومية، الجامعات، والقطاعين الخاص وغير الربحي.
+          <p className="text-[11px] text-gray-500">
+            هذا ديمو تشغيلي بصري لمنصة حصيف، مخصص للعروض أمام الجهات الحكومية،
+            الجامعات، والقطاعين الخاص وغير الربحي.
           </p>
-          <p className="text-[11px] text-slate-500">
-            يمكن ربط هذه الواجهة لاحقًا بأنظمة الدخول والتكاملات الفعلية.
+          <p className="text-[11px] text-gray-500">
+            يمكن ربط هذه الواجهة لاحقًا بأنظمة الدخول والتكاملات الفعلية
+            وقواعد البيانات.
           </p>
         </div>
       </footer>

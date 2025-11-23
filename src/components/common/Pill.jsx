@@ -5,8 +5,8 @@ export const Pill = ({ active, children, onClick }) => (
     onClick={onClick}
     className={`px-3 py-1 rounded-full text-xs md:text-sm border transition ${
       active
-        ? "bg-emerald-500 border-emerald-500 text-white shadow-sm"
-        : "bg-slate-900/60 border-slate-700 text-slate-200 hover:bg-slate-800"
+        ? "bg-brand-green text-white border-brand-green"
+        : "bg-white text-brand-text border-brand-border hover:bg-brand-light"
     }`}
   >
     {children}

@@ -8,18 +8,12 @@ export const SectionView = ({ section }) => {
   return (
     <div className="space-y-4">
       {section.description && (
-        <p className="text-xs md:text-sm text-slate-300 leading-relaxed">
+        <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
           {section.description}
         </p>
       )}
-
-      {section.type === "table" && (
-        <DemoTable columns={section.columns || []} />
-      )}
-
-      {section.type === "cards" && (
-        <StatCards cards={section.cards || []} />
-      )}
+      {section.type === "table" && <DemoTable columns={section.columns || []} />}
+      {section.type === "cards" && <StatCards cards={section.cards || []} />}
     </div>
   );
 };

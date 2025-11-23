@@ -1,14 +1,14 @@
 import React from "react";
 
 export const DemoTable = ({ columns }) => (
-  <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/60">
+  <div className="overflow-x-auto border border-brand-border rounded-lg bg-white">
     <table className="min-w-full text-xs md:text-sm text-right">
-      <thead className="border-b border-slate-800 bg-slate-900/80">
+      <thead className="bg-gray-50 border-b border-brand-border">
         <tr>
           {columns.map((col) => (
             <th
               key={col}
-              className="px-4 py-3 font-semibold text-slate-200 whitespace-nowrap"
+              className="px-4 py-3 font-semibold text-gray-700 whitespace-nowrap"
             >
               {col}
             </th>
@@ -19,14 +19,14 @@ export const DemoTable = ({ columns }) => (
         {[1, 2, 3].map((row) => (
           <tr
             key={row}
-            className="border-t border-slate-800/80 hover:bg-slate-900/80"
+            className={row % 2 === 0 ? "bg-gray-50" : "bg-white"}
           >
             {columns.map((col) => (
               <td
                 key={col}
-                className="px-4 py-3 text-slate-400 whitespace-nowrap"
+                className="px-4 py-3 text-gray-500 whitespace-nowrap text-xs md:text-sm"
               >
-                ـ بيانات تجريبية لعرض الديمو ـ
+                بيانات تجريبية للعرض
               </td>
             ))}
           </tr>
