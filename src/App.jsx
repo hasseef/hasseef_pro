@@ -5,6 +5,7 @@ import { AccountsDemo } from "./pages/AccountsDemo";
 import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
 import { AboutFlow } from "./pages/AboutFlow";
+import { GovernmentPage } from "./pages/Government";
 
 export default function App() {
   const [view, setView] = useState("landing");
@@ -21,6 +22,8 @@ export default function App() {
         return <Signup onChangeView={setView} />;
       case "about":
         return <AboutFlow />;
+      case "government":
+        return <GovernmentPage />;
       default:
         return <Landing onChangeView={setView} />;
     }

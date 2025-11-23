@@ -40,6 +40,12 @@ export const Header = ({ onChangeView }) => {
           >
             كيف تعمل حصيف؟
           </button>
+          <button
+            className="hover:text-brand-green transition"
+            onClick={() => onChangeView("government")}
+          >
+            حصيف والقطاع الحكومي
+          </button>
         </nav>
 
         {/* Left: Vision 2030 + Talbiya logos */}
