@@ -1,43 +1,84 @@
 import React from "react";
-import { PrimaryButton, GhostButton } from "../components/common/Buttons";
-import { ACCOUNTS } from "../config/accounts";
+import { accounts } from "../config/accounts";
 
-export const Login = ({ onChangeView, onPickAccount }) => {
+export function Login() {
   return (
-    <div className="min-h-[70vh] flex items-center justify-center px-4 py-10">
-      <div className="w-full max-w-lg rounded-lg border border-brand-border bg-white p-6 space-y-5">
-        <div className="space-y-1 text-center">
-          <h2 className="text-lg font-semibold text-brand-text">
-            تسجيل الدخول إلى منصة حصيف (ديمو)
-          </h2>
-          <p className="text-xs text-gray-600">
-            يمكن اختيار نوع الحساب لتجربة الواجهة كما تظهر للمستخدم الفعلي.
-          </p>
+    <div>
+      <div className="page-header">
+        <div>
+          <div className="page-title">تسجيل الدخول إلى حسابك في حصيف</div>
+          <div className="page-subtitle">
+            هذه واجهة تجريبية توضح أن المنصة تدعم الدخول بعدة أنواع من الحسابات الوطنية.
+          </div>
         </div>
-        <div className="grid md:grid-cols-2 gap-3 max-h-64 overflow-y-auto text-[11px]">
-          {ACCOUNTS.map((acc) => (
-            <button
-              key={acc.id}
-              className="rounded-md border border-brand-border bg-gray-50 px-3 py-2 text-right hover:bg-white transition"
-              onClick={() => {
-                onPickAccount(acc.id);
-                onChangeView("accounts");
-              }}
-            >
-              <div className="font-semibold mb-1">{acc.label}</div>
-              <div className="text-[10px] text-gray-500">
-                {acc.typeLabel}
-              </div>
+      </div>
+      <div className="grid-3">
+        {accounts.map((a) => (
+          <div className="card" key={a.id}>
+            <div className="card-header">{a.name}</div>
+            <div className="card-sub">{a.role}</div>
+            <button className="btn primary" type="button">
+              الدخول كـ {a.short}
             </button>
-          ))}
-        </div>
-        <div className="pt-2 border-t border-brand-border/70">
-          <p className="text-[11px] text-gray-500 text-center">
-            في النسخة التشغيلية الفعلية سيتم ربط الدخول بأنظمة الهوية الوطنية
-            أو حسابات الجهات.
-          </p>
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );
-};
+}
+
+export function Signup() {
+  return (
+    <div>
+      <div className="page-header">
+        <div>
+          <div className="page-title">إنشاء حساب جديد</div>
+          <div className="page-subtitle">
+            لاستخدام المنصة واقتراح الحلول أو تقديم المشاريع أو التمويل، يمكن للجهات والأفراد طلب إنشاء حساب عبر
+            النماذج المعتمدة.
+          </div>
+        </div>
+      </div>
+      <div className="card">
+        <div className="card-header">نموذج أولي لإنشاء حساب</div>
+        <div className="card-sub">
+          يوضّح الحقول الرئيسية فقط، ويمكن استبداله لاحقًا بالنموذج النهائي من قبل فريق التطوير.
+        </div>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            alert("هذا نموذج توضيحي فقط.");
+          }}
+        >
+          <div style={{ display: "grid", gap: "0.6rem", maxWidth: 480 }}>
+            <input
+              required
+              placeholder="اسم الجهة / الفرد"
+              style={{ padding: "0.4rem 0.6rem", borderRadius: 8, border: "1px solid #e5e7eb" }}
+            />
+            <input
+              required
+              type="email"
+              placeholder="البريد الإلكتروني"
+              style={{ padding: "0.4rem 0.6rem", borderRadius: 8, border: "1px solid #e5e7eb" }}
+            />
+            <select
+              required
+              style={{ padding: "0.4rem 0.6rem", borderRadius: 8, border: "1px solid #e5e7eb" }}
+            >
+              <option value="">نوع الحساب</option>
+              {accounts.map((a) => (
+                <option key={a.id} value={a.id}>
+                  {a.name}
+                </option>
+              ))}
+            </select>
+            <button className="btn primary" type="submit" style={{ width: "fit-content" }}>
+              إرسال طلب إنشاء الحساب
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
