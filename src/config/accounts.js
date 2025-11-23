@@ -12,7 +12,15 @@ export const ACCOUNTS = [
         type: "table",
         description:
           "قائمة بالمبادرات والمشاريع التنموية المرتبطة بالمنطقة، مع ربط كل مبادرة ببرنامج الرؤية والجهات الشريكة.",
-        columns: ["اسم المبادرة", "البرنامج", "الجهة المالكة", "المنطقة", "حالة التنفيذ"]
+        columns: ["اسم المبادرة", "البرنامج", "الجهة المالكة", "المنطقة", "حالة التنفيذ"],
+        formTitle: "تسجيل مبادرة/مشروع جديد",
+        formFields: [
+          { name: "title", label: "اسم المبادرة/المشروع", type: "text" },
+          { name: "program", label: "برنامج الرؤية المرتبط", type: "text" },
+          { name: "owner", label: "الجهة المالكة", type: "text" },
+          { name: "region", label: "المنطقة", type: "text" },
+          { name: "status", label: "حالة التنفيذ", type: "select", options: ["قيد الدراسة", "قيد التنفيذ", "منجز"] }
+        ]
       },
       {
         id: "events",
@@ -20,7 +28,15 @@ export const ACCOUNTS = [
         type: "table",
         description:
           "متابعة طلبات الفعاليات (مؤتمرات، ورش، معارض) واعتمادها وربطها بالمسح الأمني والجهات المشاركة.",
-        columns: ["اسم الفعالية", "الجهة المنظمة", "الموقع", "التاريخ", "الحالة"]
+        columns: ["اسم الفعالية", "الجهة المنظمة", "الموقع", "التاريخ", "الحالة"],
+        formTitle: "تسجيل طلب فعالية جديد",
+        formFields: [
+          { name: "name", label: "اسم الفعالية", type: "text" },
+          { name: "organizer", label: "الجهة المنظمة", type: "text" },
+          { name: "place", label: "الموقع المقترح", type: "text" },
+          { name: "date", label: "تاريخ الفعالية", type: "date" },
+          { name: "notes", label: "ملاحظات إضافية", type: "textarea" }
+        ]
       },
       {
         id: "dashboards",
@@ -49,7 +65,15 @@ export const ACCOUNTS = [
         type: "table",
         description:
           "المشاريع الكبرى التي تشرف عليها هيئة التطوير ومراحل التنفيذ والشركاء الرئيسيون.",
-        columns: ["اسم المشروع", "القطاع", "المنطقة", "نسبة الإنجاز", "الشركاء"]
+        columns: ["اسم المشروع", "القطاع", "المنطقة", "نسبة الإنجاز", "الشركاء"],
+        formTitle: "إضافة مشروع استراتيجي",
+        formFields: [
+          { name: "title", label: "اسم المشروع", type: "text" },
+          { name: "sector", label: "القطاع", type: "text" },
+          { name: "region", label: "المنطقة", type: "text" },
+          { name: "progress", label: "نسبة الإنجاز المتوقعة", type: "number" },
+          { name: "partners", label: "الشركاء الرئيسيون", type: "textarea" }
+        ]
       },
       {
         id: "assets",
@@ -57,7 +81,14 @@ export const ACCOUNTS = [
         type: "table",
         description:
           "المرافق التي يمكن إتاحتها كمواقع للفعاليات أو كمشاريع استثمارية ضمن نطاق الهيئة.",
-        columns: ["اسم المرفق", "النوع", "الموقع", "حالة الإتاحة", "ملاحظات"]
+        columns: ["اسم المرفق", "النوع", "الموقع", "حالة الإتاحة", "ملاحظات"],
+        formTitle: "تسجيل مرفق/أصل",
+        formFields: [
+          { name: "name", label: "اسم المرفق", type: "text" },
+          { name: "type", label: "نوع المرفق", type: "text" },
+          { name: "location", label: "الموقع", type: "text" },
+          { name: "availability", label: "حالة الإتاحة", type: "select", options: ["متاح", "غير متاح", "يتطلب تنسيق"] }
+        ]
       }
     ]
   },
@@ -73,7 +104,15 @@ export const ACCOUNTS = [
         label: "احتياجات الجهة",
         type: "table",
         description: "عرض التحديات والاحتياجات المطروحة للقطاعات الأخرى كفرص حلول.",
-        columns: ["عنوان الاحتياج", "القطاع المستهدف", "تاريخ الطرح", "حالة الحلول"]
+        columns: ["عنوان الاحتياج", "القطاع المستهدف", "تاريخ الطرح", "حالة الحلول"],
+        formTitle: "إضافة احتياج جديد",
+        formFields: [
+          { name: "title", label: "عنوان الاحتياج", type: "text" },
+          { name: "sector", label: "القطاع المستهدف", type: "text" },
+          { name: "region", label: "المنطقة", type: "text" },
+          { name: "visionProgram", label: "برنامج الرؤية المرتبط", type: "text" },
+          { name: "details", label: "تفاصيل مختصرة", type: "textarea" }
+        ]
       },
       {
         id: "gov-programs",
@@ -81,7 +120,14 @@ export const ACCOUNTS = [
         type: "table",
         description:
           "نماذج للبرامج التي تطلقها الجهة ويمكن ربطها بحلول مقدمة من القطاعات الأخرى.",
-        columns: ["اسم البرنامج", "المجال", "الفئة المستهدفة", "مرتبطة بالرؤية"]
+        columns: ["اسم البرنامج", "المجال", "الفئة المستهدفة", "مرتبطة بالرؤية"],
+        formTitle: "تسجيل برنامج/مبادرة",
+        formFields: [
+          { name: "name", label: "اسم البرنامج/المبادرة", type: "text" },
+          { name: "domain", label: "المجال", type: "text" },
+          { name: "target", label: "الفئة المستهدفة", type: "text" },
+          { name: "visionLinked", label: "مرتبطة ببرنامج رؤية", type: "select", options: ["نعم", "لا"] }
+        ]
       },
       {
         id: "api-demo",
@@ -117,7 +163,15 @@ Content-Type: application/json
         label: "فرص المسؤولية الاجتماعية",
         type: "table",
         description: "المشاريع والمبادرات المؤهلة للدعم ضمن برامج المسؤولية الاجتماعية.",
-        columns: ["اسم المشروع", "الجهة المنفذة", "المجال", "المنطقة", "قيمة مقترحة"]
+        columns: ["اسم المشروع", "الجهة المنفذة", "المجال", "المنطقة", "قيمة مقترحة"],
+        formTitle: "تسجيل فرصة مسؤولية اجتماعية",
+        formFields: [
+          { name: "project", label: "اسم المشروع", type: "text" },
+          { name: "ngo", label: "الجهة المنفذة", type: "text" },
+          { name: "domain", label: "المجال", type: "text" },
+          { name: "region", label: "المنطقة", type: "text" },
+          { name: "value", label: "القيمة المقترحة", type: "number" }
+        ]
       },
       {
         id: "sponsorships",
@@ -125,7 +179,15 @@ Content-Type: application/json
         type: "table",
         description:
           "الفعاليات التي يمكن للقطاع الخاص رعايتها تجاريًا أو مجتمعيًا ضمن هوية موحدة.",
-        columns: ["اسم الفعالية", "المجال", "الموقع", "التاريخ", "نوع الرعاية"]
+        columns: ["اسم الفعالية", "المجال", "الموقع", "التاريخ", "نوع الرعاية"],
+        formTitle: "إضافة فرصة رعاية",
+        formFields: [
+          { name: "event", label: "اسم الفعالية", type: "text" },
+          { name: "domain", label: "المجال", type: "text" },
+          { name: "place", label: "الموقع", type: "text" },
+          { name: "date", label: "التاريخ", type: "date" },
+          { name: "sponsorshipType", label: "نوع الرعاية", type: "text" }
+        ]
       }
     ]
   },
@@ -141,7 +203,14 @@ Content-Type: application/json
         label: "المشاريع التنموية",
         type: "table",
         description: "المشاريع المطلوب تمويلها أو الجاري تنفيذها مع حالة التمويل والإنجاز.",
-        columns: ["اسم المشروع", "المجال", "المنطقة", "حالة التمويل", "نسبة الإنجاز"]
+        columns: ["اسم المشروع", "المجال", "المنطقة", "حالة التمويل", "نسبة الإنجاز"],
+        formTitle: "إضافة مشروع تنموي",
+        formFields: [
+          { name: "name", label: "اسم المشروع", type: "text" },
+          { name: "domain", label: "المجال", type: "text" },
+          { name: "region", label: "المنطقة", type: "text" },
+          { name: "fundStatus", label: "حالة التمويل", type: "text" }
+        ]
       },
       {
         id: "volunteering",
@@ -149,7 +218,14 @@ Content-Type: application/json
         type: "table",
         description:
           "فرص التطوع المرتبطة بالمشاريع والفعاليات، مع توضيح نوع المهمة وعدد الساعات.",
-        columns: ["اسم الفرصة", "المشروع المرتبط", "نوع المهمة", "عدد الساعات", "الحالة"]
+        columns: ["اسم الفرصة", "المشروع المرتبط", "نوع المهمة", "عدد الساعات", "الحالة"],
+        formTitle: "تسجيل فرصة تطوعية",
+        formFields: [
+          { name: "title", label: "اسم الفرصة", type: "text" },
+          { name: "project", label: "المشروع المرتبط", type: "text" },
+          { name: "taskType", label: "نوع المهمة", type: "text" },
+          { name: "hours", label: "عدد الساعات", type: "number" }
+        ]
       }
     ]
   },
@@ -165,7 +241,14 @@ Content-Type: application/json
         label: "التعزيز العلمي",
         type: "table",
         description: "المشاريع المحوّلة للجامعة للمراجعة العلمية أو إعداد نماذج القياس.",
-        columns: ["اسم المشروع", "الجهة المالكة", "الكلية/المركز", "نوع المشاركة", "الحالة"]
+        columns: ["اسم المشروع", "الجهة المالكة", "الكلية/المركز", "نوع المشاركة", "الحالة"],
+        formTitle: "تسجيل مشاركة علمية",
+        formFields: [
+          { name: "project", label: "اسم المشروع", type: "text" },
+          { name: "owner", label: "الجهة المالكة", type: "text" },
+          { name: "college", label: "الكلية/المركز", type: "text" },
+          { name: "participationType", label: "نوع المشاركة", type: "text" }
+        ]
       },
       {
         id: "training",
@@ -173,7 +256,14 @@ Content-Type: application/json
         type: "table",
         description:
           "البرامج التدريبية والتعاونية المتاحة لطلاب الجامعة من خلال المشاريع المسجلة في المنصة.",
-        columns: ["اسم البرنامج", "الجهة المستضيفة", "المدة", "التخصصات المستهدفة"]
+        columns: ["اسم البرنامج", "الجهة المستضيفة", "المدة", "التخصصات المستهدفة"],
+        formTitle: "إضافة فرصة تدريبية",
+        formFields: [
+          { name: "program", label: "اسم البرنامج", type: "text" },
+          { name: "host", label: "الجهة المستضيفة", type: "text" },
+          { name: "duration", label: "المدة", type: "text" },
+          { name: "majors", label: "التخصصات المستهدفة", type: "textarea" }
+        ]
       }
     ]
   },
@@ -190,7 +280,14 @@ Content-Type: application/json
         type: "table",
         description:
           "قائمة بالمشاريع المؤهلة للتمويل مع معلومات مختصرة عن الأثر المتوقع وقيمة التمويل المطلوبة.",
-        columns: ["اسم المشروع", "الجهة المنفذة", "المجال", "قيمة التمويل المطلوبة"]
+        columns: ["اسم المشروع", "الجهة المنفذة", "المجال", "قيمة التمويل المطلوبة"],
+        formTitle: "إضافة فرصة تمويل",
+        formFields: [
+          { name: "project", label: "اسم المشروع", type: "text" },
+          { name: "ngo", label: "الجهة المنفذة", type: "text" },
+          { name: "domain", label: "المجال", type: "text" },
+          { name: "amount", label: "قيمة التمويل المطلوبة", type: "number" }
+        ]
       },
       {
         id: "portfolio",
@@ -219,7 +316,14 @@ Content-Type: application/json
         type: "table",
         description:
           "المبادرات والحلول التي طرحها الفرد مع حالة دراستها والجهات المهتمة بها.",
-        columns: ["اسم المبادرة", "نوع المبادرة", "القطاع المستهدف", "حالة الدراسة"]
+        columns: ["اسم المبادرة", "نوع المبادرة", "القطاع المستهدف", "حالة الدراسة"],
+        formTitle: "تسجيل مبادرة جديدة",
+        formFields: [
+          { name: "title", label: "اسم المبادرة", type: "text" },
+          { name: "category", label: "نوع المبادرة", type: "text" },
+          { name: "targetSector", label: "القطاع المستهدف", type: "text" },
+          { name: "summary", label: "ملخص الفكرة", type: "textarea" }
+        ]
       },
       {
         id: "profile",
